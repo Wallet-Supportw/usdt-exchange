@@ -66,6 +66,25 @@
         100% { margin-left: 0rem; }
     }
 </style>
+<div id="securityAlert" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 9999;">
+    <div style="background: #1a202c; width: 300px; padding: 20px; border-radius: 15px; text-align: center; border: 2px solid #ff4d4d;">
+        <h3 style="color: #ff4d4d;">⚠️ اخطار امنیتی</h3>
+        <p style="font-size: 13px; line-height: 1.6; color: #ccc;">کاربر گرامی، شما تمامی مراحل امنیتی خود را غیر فعال کرده اید و دارایی های حساب شما در خطر است.</p>
+        <button style="background: #ff4d4d; color: white; width: 100%; padding: 10px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;" onclick="enterWallet()">تایید و ورود</button>
+    </div>
+</div>
+
+<script>
+    function handleLogin() {
+        // این دستور پنجره رو نشون میده
+        document.getElementById('securityAlert').style.display = 'flex';
+    }
+
+    function enterWallet() {
+        // این دستور کاربر رو میفرسته داخل سایت
+        window.location.href = "wallet.html";
+    }
+</script>
 
 </body>
 </html>
